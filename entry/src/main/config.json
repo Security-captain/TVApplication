@@ -1,0 +1,85 @@
+{
+  "app": {
+    "bundleName": "com.example.tvapplication",
+    "vendor": "example",
+    "version": {
+      "code": 1,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 3,
+      "target": 3
+    }
+  },
+  "deviceConfig": {},
+  "module": {
+    "package": "com.example.tvapplication",
+    "name": ".TVApplication",
+    "reqCapabilities": [
+      "video_support"
+    ],
+    "deviceType": [
+      "tv"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "landscape",
+        "formEnabled": false,
+        "name": "com.example.tvapplication.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TVApplication",
+        "type": "page",
+        "launchType": "standard"
+      },
+      {
+        "skills": [
+          {
+            "actions": [
+              "action.system.recovery"
+            ]
+          }
+        ],
+        "orientation": "landscape",
+        "formEnabled": false,
+        "name": "com.example.tvapplication.RecoveryAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TVApplication",
+        "type": "page",
+        "launchType": "standard"
+      },{
+        "skills": [
+          {
+            "actions": [
+              "action.system.fastboot"
+            ]
+          }
+        ],
+        "orientation": "landscape",
+        "formEnabled": false,
+        "name": "com.example.tvapplication.FastbootAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TVApplication",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_tvapplication" default="compile.module.tvapplication">
+  <dirname property="module.tvapplication.basedir" file="${ant.file.module_tvapplication}"/>
+  
+  <property name="module.jdk.home.tvapplication" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.tvapplication" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.tvapplication" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.tvapplication" value="-encoding UTF-8 -source 8 -target 8 ${compiler.args}"/>
+  
+  <property name="tvapplication.output.dir" value="${module.tvapplication.basedir}/build/classes/java/main"/>
+  <property name="tvapplication.testoutput.dir" value="${module.tvapplication.basedir}/build/classes/java/test"/>
+  
+  <path id="tvapplication.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="tvapplication.module.production.classpath">
+    <path refid="${module.jdk.classpath.tvapplication}"/>
+  </path>
+  
+  <path id="tvapplication.runtime.production.module.classpath">
+    <pathelement location="${tvapplication.output.dir}"/>
+  </path>
+  
+  <path id="tvapplication.module.classpath">
+    <path refid="${module.jdk.classpath.tvapplication}"/>
+    <pathelement location="${tvapplication.output.dir}"/>
+  </path>
+  
+  <path id="tvapplication.runtime.module.classpath">
+    <pathelement location="${tvapplication.testoutput.dir}"/>
+    <pathelement location="${tvapplication.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.tvapplication">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.tvapplication">
+    <patternset refid="excluded.from.module.tvapplication"/>
+  </patternset>
+  
+  
+  <target name="compile.module.tvapplication" depends="compile.module.tvapplication.production,compile.module.tvapplication.tests" description="Compile module TVApplication"/>
+  
+  <target name="compile.module.tvapplication.production" depends="register.custom.compilers" description="Compile module TVApplication; production classes"/>
+  
+  <target name="compile.module.tvapplication.tests" depends="register.custom.compilers,compile.module.tvapplication.production" description="compile module TVApplication; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.tvapplication" description="cleanup module">
+    <delete dir="${tvapplication.output.dir}"/>
+    <delete dir="${tvapplication.testoutput.dir}"/>
+  </target>
+</project>
